@@ -48,12 +48,12 @@ class LitAutoEncoder(L.LightningModule):
 def main():
     # データセットのダウンロードと読み込み
     dataset = MNIST(os.getcwd(), download=True, transform=transforms.ToTensor())
-    train_loader = DataLoader(dataset, batch_size=32) # num_workersはエラー回避のためデフォルト(0)にします
+    train_loader = DataLoader(dataset, batch_size=32) # num_workersはエラー回避のためデフォルト(0)
 
     # モデルの初期化
     autoencoder = LitAutoEncoder(Encoder(), Decoder())
 
-    # トレーナーの定義（ここでは動作確認用にエポック数を1に制限しています）
+    # トレーナーの定義（ここでは動作確認用にエポック数を1に制限）
     trainer = L.Trainer(limit_train_batches=100, max_epochs=1)
     
     # 学習開始
